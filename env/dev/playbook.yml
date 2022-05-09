@@ -1,4 +1,4 @@
-- hosts: terraform-ansible
+- hosts: development
   tasks:
   - name: Instalando o python3, virtualenv
     apt: 
@@ -13,8 +13,13 @@
       name:
         - django
         - djangorestframework
-  - name: Iniciando o projeto em Django
+  - name: verificando se o projeto ja foi iniciado
+    stat:
+      path: /home/ubuntu/tcc/setup/settings.py
+    register: projeto
+  - name: Iniciando o projeto
     shell: '. /home/ubuntu/tcc/venv/bin/activate; django-admin startproject setup /home/ubuntu/tcc/'
+    when: not projeto.stat.exists
   - name: Ajustando o host do settings.
     lineinfile:
       path: /home/ubuntu/tcc/setup/settings.py
