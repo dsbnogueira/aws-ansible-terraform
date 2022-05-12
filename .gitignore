@@ -1,6 +1,9 @@
 .terraform*
+terraform.tfstate
 iac-alura.pem
 dev-iac
 dev-iac.pub
 prd-iac
 prd-iac.pub
+env/prd/terraform.tfstate
+env/prd/terraform.tfstate.backup
