@@ -4,8 +4,8 @@ module "aws-dev" {
   region_aws = "us-west-2"
   chave_ssh = "dev-iac"
   nome = "development"
-}
-
-output "dev_public_ip" {
-  value = module.aws-dev.public_ip
+  grupoDeSeguranca = "development"
+  minimo = 0
+  maximo = 2
+  nomeGrupo = "devlopment"
 }
